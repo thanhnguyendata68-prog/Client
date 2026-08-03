@@ -1,5 +1,9 @@
 // 🌱 Bonus: Quick Database Seed Script (server/seed.js)
 // Create a new file server/seed.js to automatically populate test accounts so you can log in as Sophie (Manager) or Jessica (Student) right away!
+
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const User = require('./models/User');
@@ -11,7 +15,9 @@ dotenv.config();
 
 const seedData = async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_URI);
+        const mongoUri = process.env.MONGODB_URI;
+        console.log('Connecting to MongoDB...');
+        await mongoose.connect(mongoUri);
         console.log('MongoDB Connected for Seeding...');
 
         await User.deleteMany({});

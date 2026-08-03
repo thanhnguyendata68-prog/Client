@@ -1,5 +1,8 @@
 // 🟢 Part 1: Database Connection & JWT Utilities
 // Purpose: Connects Express to your MongoDB database using Mongoose.
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '1.1.1.1']);
+
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
