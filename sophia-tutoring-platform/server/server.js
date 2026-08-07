@@ -40,6 +40,10 @@ app.use('/api/users', userRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/resources', resourceRoutes);
 app.use('/api/inquiries', inquiryRoutes);
+const chatRoutes = require('./routes/chatRoutes');
+
+// Mount Route
+app.use('/api/chat', chatRoutes);
 
 // Central Error Handler
 app.use(errorHandler);

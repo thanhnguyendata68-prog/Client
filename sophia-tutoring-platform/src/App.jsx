@@ -1,14 +1,16 @@
-// 🗺️ 8. Main App Router Wiring (src/App.jsx)
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import ScrollToTop from './components/common/ScrollToTop';
+import AIChatWidget from './components/common/AIChatWidget';
 
 // Pages
 import HomePage from './pages/public/HomePage';
+import AboutPage from './pages/public/AboutPage';
+import CoursesPage from './pages/public/CoursesPage';
 import LoginPage from './pages/public/LoginPage';
 import RegisterPage from './pages/public/RegisterPage';
 import ContactPage from './pages/public/ContactPage';
@@ -20,17 +22,18 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--bg-primary)' }}>
           <Navbar />
           <main style={{ flex: 1 }}>
             <Routes>
-              {/* Public Routes */}
+              {/* Public Dedicated Routes */}
               <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/courses" element={<CoursesPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/courses" element={<HomePage />} />
-              <Route path="/about" element={<HomePage />} />
 
               {/* Protected Student Routes */}
               <Route element={<ProtectedRoute allowedRoles={['CUSTOMER', 'MANAGER']} />}>
@@ -44,6 +47,10 @@ function App() {
               </Route>
             </Routes>
           </main>
+
+          {/* Floating AI Assistant Widget across all pages */}
+          <AIChatWidget />
+
           <Footer />
         </div>
       </Router>

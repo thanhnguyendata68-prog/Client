@@ -82,3 +82,16 @@ Shared Layout: Navbar (with role-aware nav links), Footer, ProtectedRoute.
 Public Views: Landing Page, RN Bio & Credentials, Courses, Contact Inquiry.
 Student Portal: Student Dashboard, Booking Engine, Study Materials & Mnemonics.
 Manager Admin Portal: Admin Dashboard, Schedule & Slot Manager, Student Directory, Resource Uploader, Inquiry Lead Manager.
+
+--------------------------
+🚀 How to Run Your Entire Full-Stack Platform!
+Start the Express API Server (in sophia-tutoring-platform/server):
+
+bash
+cd server
+npm run dev
+Start the React Frontend (in project root sophia-tutoring-platform):
+
+bash
+npm run dev
+Open your browser at http://localhost:5173 (or the Vite dev URL)! You can now register as a student or log in as Sophie (Manager) (sophie.rn@example.com / Password123!) to experience your full platform!
