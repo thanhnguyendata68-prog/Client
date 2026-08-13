@@ -1,0 +1,111 @@
+sophia-tutoring-platform/
+├── server/                        # Node.js + Express.js Backend
+│   ├── config/                    # Configuration files
+│   │   ├── db.js                  # MongoDB connection string setup
+│   │   └── jwt.js                 # JWT secret & expiration settings
+│   ├── controllers/               # Route logic handlers
+│   │   ├── authController.js      # Login, Register, Password Reset
+│   │   ├── userController.js      # Profile, Admin student management
+│   │   ├── bookingController.js   # Session booking, scheduling
+│   │   ├── resourceController.js  # File uploads, downloadable notes
+│   │   └── inquiryController.js   # Contact form submissions
+│   ├── middleware/                # Express Middlewares
+│   │   ├── authMiddleware.js      # JWT verification & RBAC permissions (GUEST, CUSTOMER, MANAGER)
+│   │   ├── errorMiddleware.js     # Global error handling
+│   │   └── uploadMiddleware.js    # Multer configuration for study resource file uploads
+│   ├── models/                    # Mongoose Data Models
+│   │   ├── User.js                # User accounts & RBAC roles
+│   │   ├── Booking.js             # Tutoring sessions & payment status
+│   │   ├── Resource.js            # Study guides, mnemonics, PDFs
+│   │   └── Inquiry.js            # Public contact inquiries
+│   ├── routes/                    # API Route Definitions
+│   │   ├── authRoutes.js
+│   │   ├── userRoutes.js
+│   │   ├── bookingRoutes.js
+│   │   ├── resourceRoutes.js
+│   │   └── inquiryRoutes.js
+│   ├── utils/                     # Helper functions (email, date formatters, pricing logic)
+│   │   ├── sendEmail.js
+│   │   └── generateToken.js
+│   ├── .env.example               # Backend environment variables template
+│   ├── package.json
+│   └── server.js                  # Entry point
+│
+└── client/                        # React Frontend (Vite / React Router)
+    ├── public/                    # Static assets & favicons
+    ├── src/
+    │   ├── assets/                # Images, badges, branding assets
+    │   ├── components/            # Reusable UI components
+    │   │   ├── common/            # Buttons, Modals, Cards, Navbars, Footers
+    │   │   ├── auth/              # ProtectedRoute wrapper, LoginForm, SignupForm
+    │   │   ├── booking/           # Calendar view, SlotPicker, BookingModal
+    │   │   └── resources/         # ResourceCard, CategoryFilter
+    │   ├── context/               # React Context Providers
+    │   │   ├── AuthContext.jsx    # Auth state & user session
+    │   │   └── BookingContext.jsx # Booking cart/step state
+    │   ├── hooks/                 # Custom React Hooks
+    │   │   ├── useAuth.js
+    │   │   └── useFetch.js
+    │   ├── pages/                 # Main Views / Pages
+    │   │   ├── public/            # LandingPage, AboutBioPage, CoursesPage, ContactPage
+    │   │   ├── student/           # StudentDashboard, MyBookingsPage, ResourcesPage, InvoicesPage
+    │   │   └── admin/             # AdminDashboard, ScheduleManager, StudentDirectory, ResourceUploader
+    │   ├── services/              # API Client (Axios instances & endpoints)
+    │   │   ├── api.js
+    │   │   ├── authService.js
+    │   │   ├── bookingService.js
+    │   │   └── resourceService.js
+    │   ├── styles/                # CSS / Design Tokens / Themes
+    │   │   ├── main.css
+    │   │   └── components.css
+    │   ├── App.jsx                # Main App Router setup
+    │   └── main.jsx               # React DOM entry point
+    ├── .env.example
+    └── package.json
+
+
+-----------------------
+📋 Next Logical Steps
+🛠️ Step 1: Backend Middlewares & Utilities
+JWT Generator (server/utils/generateToken.js) – Token signing helper.
+Auth Middleware (server/middleware/authMiddleware.js) – Protects endpoints by verifying JWTs.
+RBAC Middleware (server/middleware/rbacMiddleware.js) – Enforces role permissions (GUEST, CUSTOMER, MANAGER).
+Error Middleware (server/middleware/errorMiddleware.js) – Centralized error handler.
+⚙️ Step 2: Controllers & API Routes
+Auth (/api/auth): Register student, Login, Profile /me.
+Users (/api/users): Manager student directory, profile notes, status toggles.
+Bookings (/api/bookings): Interactive session scheduling, student bookings, manager session approvals, Zoom link additions, and invoice statuses.
+Resources (/api/resources): Note & mnemonic uploader, role-based download filters (PUBLIC, CUSTOMER, PREMIUM).
+Inquiries (/api/inquiries): Public contact form submissions & manager lead management.
+🎨 Step 3: Frontend SPA (React + Vite)
+Shared Layout: Navbar (with role-aware nav links), Footer, ProtectedRoute.
+Public Views: Landing Page, RN Bio & Credentials, Courses, Contact Inquiry.
+Student Portal: Student Dashboard, Booking Engine, Study Materials & Mnemonics.
+Manager Admin Portal: Admin Dashboard, Schedule & Slot Manager, Student Directory, Resource Uploader, Inquiry Lead Manager.
+
+--------------------------
+🚀 How to Run Your Entire Full-Stack Platform!
+Start the Express API Server (in sophia-tutoring-platform/server):
+
+bash
+cd server
+npm run dev
+Start the React Frontend (in project root sophia-tutoring-platform):
+
+bash
+npm run dev
+Open your browser at http://localhost:5173 (or the Vite dev URL)! You can now register as a student or log in as Sophie (Manager) (sophie.rn@example.com / Password123!) to experience your full platform!
+
+-------------------
+using Render to deploy backend and font-end : https://sophia-tutoring-platform.onrender.com/
+
+----------------------
+feedback:
+- why my ai is not work like gemini that can be answer all the question
+- About contact page, if I login my email where prob come out 
+
+
+Update: 
+newtorontoch@gmail.com
++1 (647) 770 1488
+ 
